@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/cardiovascular-health-predictor-logo.png" alt="Cardiovascular Health Predictor Logo" width="180" />
+<img src="static/health_predictor_logo.png" alt="Cardiovascular Health Predictor Logo" width="180" />
 
 # Cardiovascular Health Predictor
 
