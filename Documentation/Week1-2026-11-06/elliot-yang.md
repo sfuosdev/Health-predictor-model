@@ -36,9 +36,9 @@ Unordered list:
 [Project](https://github.com/sfuosdev/Health-predictor-model)
 
 ### Code block
-    ```python
-    print("Hello World!")
-    ```
+```python
+print("Hello World!")
+```
 
 ### Table
 | (0, 1) | (1, 1) |
