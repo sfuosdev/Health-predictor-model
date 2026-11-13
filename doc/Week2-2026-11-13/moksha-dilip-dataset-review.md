@@ -2,36 +2,39 @@
 
 ## Dataset 1 — Heart Disease (Cleveland subset)
 
-- **Source:** UCI Machine Learning Repository
-- **Records:** 303
-- **Features:** 13 input columns
-- **Prediction target:** `num`, which records heart disease status. For a yes/no model, `0` means absent and `1–4` mean present.
-- **Link:** [UCI Heart Disease](https://archive.ics.uci.edu/dataset/45/heart+disease)
+- **Source** — UCI Machine Learning Repository
+- **Records** — 303
+- **Features** — 13
+- **Prediction target** — `num`. For a yes/no model, `0` means heart disease is absent and `1–4` mean it is present.
+- [UCI Heart Disease dataset](https://archive.ics.uci.edu/dataset/45/heart+disease)
 
 ## Dataset 2 — Heart Failure Clinical Records
 
-- **Source:** UCI Machine Learning Repository
-- **Records:** 299
-- **Features:** 12 input columns, including follow-up time
-- **Prediction target:** `DEATH_EVENT`, whether a patient with heart failure died during follow-up.
-- **Link:** [UCI Heart Failure Clinical Records](https://archive.ics.uci.edu/dataset/519/heart+failure+clinical+records)
+- **Source** — UCI Machine Learning Repository
+- **Records** — 299
+- **Features** — 12 columns excluding the target, including follow-up time
+- **Prediction target** — `DEATH_EVENT`, whether a patient with heart failure died during follow-up.
+- [UCI Heart Failure Clinical Records dataset](https://archive.ics.uci.edu/dataset/519/heart+failure+clinical+records)
 
-## Dataset 3 — Heart Failure Prediction Dataset
+## Dataset 3 — NHANES 2017–2018 Medical Conditions Questionnaire
 
-- **Source:** Kaggle, uploaded by fedesoriano
-- **Records:** 918
-- **Features:** 11 input columns
-- **Prediction target:** `HeartDisease`, where `1` means heart disease is present and `0` means it is absent.
-- **Link:** [Kaggle Heart Failure Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
+- **Source** — CDC / National Center for Health Statistics
+- **Raw file** — `MCQ_J.xpt`, the original SAS transport file
+- **Records** — 8,897
+- **Features** — 74 candidate questionnaire columns after excluding the participant ID and target. Some columns may be unsuitable as model inputs.
+- **Prediction target** — `MCQ160C`, whether the participant reported being told by a health professional that they had coronary heart disease.
+- **Target counts** — 265 yes, 5,288 no, 16 don't know, and 3,328 blank.
+- [CDC dataset documentation](https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/MCQ_J.htm)
+- [CDC reuse guidance](https://www.cdc.gov/other/agencymaterials.html)
 
 ## Comparison
 
 | Dataset | Advantage | Limitation or data quality concern |
 | --- | --- | --- |
-| Cleveland | UCI explains the variables, and the target can be grouped into yes/no heart disease. | It has only 303 records and contains missing values. |
-| Heart Failure Clinical Records | UCI reports no missing values, and the clinical measurements are documented. | It predicts death among people who already have heart failure. Follow-up time would be unavailable for a prediction made at the first visit. |
-| Kaggle | It has the most records of the three and a yes/no heart disease target. | Some cholesterol and resting blood pressure values are zero and need checking. It includes Cleveland records, so Cleveland should not serve as an independent test set for a model trained on it. |
+| UCI Cleveland | The clinical target can be grouped into yes/no heart disease. | It has 303 records and six missing values marked `?`. |
+| UCI Heart Failure Clinical Records | The clinical measurements are documented, and the file has no blank cells. | It predicts death during follow-up in patients who already have heart failure. Follow-up duration would be unavailable at the first visit. |
+| CDC NHANES | It has the largest sample and a documented coronary heart disease question. | Diagnosis history is self-reported. Only about 4.8% of definitive answers are positive, and many records have no usable target label. |
 
 ## Recommendation
 
-I recommend the Kaggle dataset for an initial model that classifies whether heart disease is already present. It has 918 records and a target that matches that question. Before training, I would check the zero cholesterol and resting blood pressure values and document how we handle them. I would also confirm the dataset's license before adding it to the public project repository.
+I recommend UCI Cleveland for an initial model that classifies existing heart disease. The clinical target matches that goal, and the two classes are reasonably balanced after grouping the target into yes and no. The dataset is small, and the six missing values need handling before training.
