@@ -70,4 +70,5 @@
         - Not in `.csv` format
 
 - Which dataset you recommend and why
-    - 
+    - Dataset 1 (sulianova)
+    - Why: I recommend Dataset 1 (Sulianova – Kaggle) because it offers 70,000 records, relevant health features, and a straightforward binary prediction target (`cardio`). Its CSV format also makes it easy to work with Python libraries. Compared with the other datasets, it provides the best balance of data size, accessibility, and ease of implementation for our machine learning project.
