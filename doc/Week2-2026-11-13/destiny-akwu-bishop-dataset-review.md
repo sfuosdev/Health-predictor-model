@@ -5,7 +5,7 @@
 
 **Number of Records** : 303
 
-**Number of Features** : 14
+**Number of Features** : 13
 
 **Prediction Target** : To predict any trends in cardivascular events through heart data.
 
@@ -16,11 +16,21 @@
 
 **Source** : Openml
 
-**Number of Records** : 1154
+**Number of Records** : 1190
 
-**Number of Features** : 12
+**Number of Features** : 11
 
-**Prediction Target** : A means to help doctors understand the treatment outcome of those who they are treating.
+**Prediction Target** : A means to help doctors understand the treatment outcome of those who they are treating. Target = 0 means no presence of heart disease, while target = 1 means signs or presence of heart disease. 
+
+|sex| 1 = male      | 0 = female | | |
+|---|---------------|------------|-|-|
+|fbs| 1 = above 120 | 0 = below  |
+|ea | 1 = yes | 0 = no|
+|re| 0 = normal| 1 = ST-T wave abnomarlity| 2 = left ventricular hypertrophy|
+|cpt| 1 = typical angina| 2 = atypical angina| 3 = non-anginal pain| 4 = asymptomatic|
+|ST slope| 1 = upslopping| 2 = flat| 3 = downslopping|
+
+
 
 **Link**: [dataset2](https://www.openml.org/search?type=data&status=active&id=43562a)
 
