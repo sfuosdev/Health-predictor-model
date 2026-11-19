@@ -1,9 +1,15 @@
-"""CSV cleaning starter. Copy to firstname-lastname-clean.py before adapting.
+"""Clean and validate the UCI Cleveland Heart Disease dataset.
+
+Place processed.cleveland.data in data/raw/moksha-dilip/.
 
 Run from the repository root:
-    python src/data_cleaning/cleaning_template.py --member yoon-you --input dataset.csv
+    python3 src/data_cleaning/moksha-dilip-clean.py --member moksha-dilip --input processed.cleveland.data
 
-Uses only Python's standard library. CSV must have a header row.
+The script supplies column names for the headerless .data file,
+standardizes missing markers, validates numeric values and category
+codes, checks duplicates, and counts potential outliers.
+
+Outputs are saved in data/processed/moksha-dilip/.
 """
 
 import argparse
@@ -23,6 +29,17 @@ REQUIRED_COLUMNS = [
 # TASK: Add missing markers ONLY after checking the dataset documentation.
 # For example, "NA" can be a real category in some datasets.
 MISSING_MARKERS = {"", "?"}
+ALLOWED_CODES = {
+    "sex": {0, 1},
+    "cp": {1, 2, 3, 4},
+    "fbs": {0, 1},
+    "restecg": {0, 1, 2},
+    "exang": {0, 1},
+    "slope": {1, 2, 3},
+    "ca": {0, 1, 2, 3},
+    "thal": {3, 6, 7},
+    "num": {0, 1, 2, 3, 4},
+}
 
 
 def clean_value(column, value):
@@ -38,17 +55,12 @@ def clean_value(column, value):
     if not math.isfinite(number):
         raise ValueError(f"{column}: expected a finite number, got {value!r}")
 
-    if column == "num" and number not in {0, 1, 2, 3, 4}:
-        raise ValueError(f"{column}: unexpected target code {value!r}")
+    allowed = ALLOWED_CODES.get(column)
+    if allowed is not None and number not in allowed:
+        raise ValueError(
+            f"{column}: expected one of {sorted(allowed)}, got {value!r}"
+        )
 
-    return value
-
-    # TASK: Add rules for your columns here:
-    # 1. Normalize category labels when they mean the same thing.
-    # 2. Convert numeric values and handle conversion failures explicitly.
-    # 3. Validate allowed categories and documented numeric ranges.
-    # 4. Investigate outliers; do not automatically delete unusual values.
-    # Keep a count of any additional changes for your report.
     return value
 
 
