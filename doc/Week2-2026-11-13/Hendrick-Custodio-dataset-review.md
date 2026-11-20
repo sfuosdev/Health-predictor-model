@@ -36,9 +36,11 @@
         - Similarly large dataset (68,205 rows)
         - Contains 17 fields
         - Contains additional derived features, such as BMI and blood pressure categories
+        - A consolidated dataset formed by two other primary sources
+        - Not a derivative of Sulianova's dataset
     - Dataset 3:
         - Has a clearly defined prediction target `num`
-        - `num` lists if they have multiple cardiovascular disease
+        - `num` refers to the diagnosis of heart disease
         - Comes from an established machine learning repository and is used in academic research
         - Contains clinically relevant features, such as chest pain type, cholesterol, resting blood pressure, and maximum heart rate
 
@@ -47,7 +49,7 @@
         - Does not include every possible factor that contributes to cardiovascular disease
         - May not represent all age groups and demographic populations equally
     - Dataset 2:
-        - Contains outliers that may negatively affect model accuracy
+        - Previous uses of this dataset such as research papers or repositories have identified outliers that could affect the results
         - Some features are derived from existing variables, meaning there may be redundant information
     - Dataset 3:
         - Contains only 303 records
@@ -59,15 +61,14 @@
         - Age is recorded in days rather than years, requiring conversion for easier interpretation
         - Potential demographic imbalances may affect how well the model performs on different populations
     - Dataset 2:
-        - Contains approximately 6,494 identified outliers across several variables, including BMI, height, weight, and blood pressure 
         - Extreme values may distort statistical analysis and affect model training
         -Derived features, such as BMI and blood pressure categories, should be checked for consistency with their original measurements
-        - The dataset should be checked for duplicate records and missing values before training
     - Dataset 3:
         - The dataset is relatively old, with data originating from the 1980s
         - The relatively small number of records may limit the model's ability to generalize
         - Missing values are present in attributes such as `ca` and `thal`
         - Not in `.csv` format
+        - WARNING states that `cleveland.data` is corrupted. Use `processed.cleveland.data` as input
 
 - Which dataset you recommend and why
     - Dataset 1 (sulianova)
