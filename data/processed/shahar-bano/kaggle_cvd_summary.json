@@ -1,0 +1,40 @@
+{
+  "before": {
+    "rows": 70000,
+    "columns": 13,
+    "missing_values": 0,
+    "duplicate_rows": 0
+  },
+  "after": {
+    "rows": 70000,
+    "columns": 13,
+    "missing_values": 0,
+    "duplicate_rows": 0
+  },
+  "duplicates_removed_after_normalization": 0,
+  "remove_duplicates": true,
+  "missing_markers": [
+    ""
+  ],
+  "outliers_flagged": {
+    "age": 0,
+    "height": 0,
+    "weight": 0
+  },
+  "outlier_ranges": {
+    "age": [
+      1.0,
+      120.0
+    ],
+    "height": [
+      50.0,
+      250.0
+    ],
+    "weight": [
+      10.0,
+      400.0
+    ]
+  },
+  "input": "data\\raw\\shahar-bano\\kaggle_cvd.csv",
+  "output": "data\\processed\\shahar-bano\\kaggle_cvd_cleaned.csv"
+}
